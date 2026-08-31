@@ -14,7 +14,7 @@ class ClientController extends Controller
 
     public function index(): void
     {
-        $this->requireLogin();
+        $this->requireModuleAccess('clients', ['Administrator','Sales Officer','Finance Officer','Staff']);
 
         $this->view('clients/index', [
             'title' => 'Clients',

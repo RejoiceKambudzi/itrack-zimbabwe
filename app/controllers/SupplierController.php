@@ -14,7 +14,7 @@ class SupplierController extends Controller
 
     public function index(): void
     {
-        $this->requireLogin();
+        $this->requireModuleAccess('supplier', ['Administrator','Procurement Officer','Store Officer']);
 
         $this->view('suppliers/index', [
             'title' => 'Suppliers',

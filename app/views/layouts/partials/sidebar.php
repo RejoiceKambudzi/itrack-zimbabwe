@@ -1,4 +1,5 @@
 <?php if (isLoggedIn()):
+require_once dirname(__DIR__, 3) . '/models/Permission.php';
 $currentController = strtolower($_GET['controller'] ?? 'dashboard');
 if (basename($_SERVER['SCRIPT_NAME'] ?? '') === 'dashboard.php') $currentController = 'dashboard';
 $role = currentUser()['role'] ?? 'Staff';
@@ -17,9 +18,17 @@ $navModules = [
     ['label'=>'Reports','route'=>'reports','icon'=>'fa-file-lines','roles'=>['Administrator','Finance Officer','Director'],'group'=>'Operations'],
     ['label'=>'Notifications','route'=>'notification','icon'=>'fa-bell','roles'=>['Administrator','Director','Finance Officer','Procurement Officer','Store Officer','Sales Officer','Technician','Staff'],'group'=>'Support'],
     ['label'=>'Settings','route'=>'settings','icon'=>'fa-gear','roles'=>['Administrator','Director'],'group'=>'Support'],
+    ['label'=>'Permissions','route'=>'permissions','icon'=>'fa-shield-halved','roles'=>['Administrator'],'group'=>'Support'],
 ];
+$permissionModel = new Permission();
+$permissionModel->ensureModulePermissions();
+$customModules = $permissionModel->modulesForRole($role);
 $grouped = [];
-foreach ($navModules as $module) if (in_array($role, $module['roles'], true)) $grouped[$module['group']][] = $module;
+foreach ($navModules as $module) {
+    if (!in_array($role, $module['roles'], true)) continue;
+    if ($module['route'] !== 'permissions' && $customModules && !in_array($module['route'], $customModules, true)) continue;
+    $grouped[$module['group']][] = $module;
+}
 $user = currentUser() ?? [];
 $initials = strtoupper(substr((string)($user['name'] ?? 'U'), 0, 1));
 ?>

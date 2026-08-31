@@ -14,7 +14,7 @@ class NotificationController extends Controller
 
     public function index(): void
     {
-        $this->requireLogin();
+        $this->requireModuleAccess('notification', ['Administrator','Director','Finance Officer','Procurement Officer','Store Officer','Sales Officer','Technician','Staff']);
         $userId = $_SESSION['user']['id'] ?? null;
 
         $notifications = $this->notificationModel->all($userId);

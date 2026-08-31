@@ -26,7 +26,7 @@ class AccountingController extends Controller
 
     public function index(): void
     {
-        $this->requireRole(['Administrator', 'Finance Officer']);
+        $this->requireModuleAccess('accounting', ['Administrator', 'Finance Officer']);
 
         $summaries = [
             'invoices' => $this->invoiceModel->countInvoices(),

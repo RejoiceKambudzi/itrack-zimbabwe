@@ -14,7 +14,7 @@ class InventoryController extends Controller
 
     public function index(): void
     {
-        $this->requireLogin();
+        $this->requireModuleAccess('inventory', ['Administrator','Procurement Officer','Store Officer','Staff']);
         $this->view('inventory/index', ['products' => $this->productModel->all()]);
     }
 

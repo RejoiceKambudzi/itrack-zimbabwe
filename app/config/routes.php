@@ -14,4 +14,5 @@ return [
     'reports' => ['controller' => 'ReportsController', 'actions' => ['index', 'generate']],
     'notification' => ['controller' => 'NotificationController', 'actions' => ['index', 'create', 'edit', 'delete']],
     'settings' => ['controller' => 'SettingsController', 'actions' => ['index']],
+    'permissions' => ['controller' => 'PermissionsController', 'actions' => ['index', 'save']],
 ];

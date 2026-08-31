@@ -14,7 +14,7 @@ class GPSController extends Controller
 
     public function index(): void
     {
-        $this->requireLogin();
+        $this->requireModuleAccess('gps', ['Administrator','Technician','Store Officer']);
 
         $this->view('gps/index', [
             'title' => 'GPS Devices',

@@ -5,6 +5,7 @@ require_once dirname(__DIR__) . '/models/User.php';
 require_once dirname(__DIR__) . '/models/Product.php';
 require_once dirname(__DIR__) . '/models/Client.php';
 require_once dirname(__DIR__) . '/models/GPSDevice.php';
+require_once dirname(__DIR__) . '/models/Permission.php';
 
 class DashboardController extends Controller
 {
@@ -12,6 +13,7 @@ class DashboardController extends Controller
     private Product $productModel;
     private Client $clientModel;
     private GPSDevice $gpsModel;
+    private Permission $permissionModel;
 
     public function __construct()
     {
@@ -19,6 +21,7 @@ class DashboardController extends Controller
         $this->productModel = new Product();
         $this->clientModel = new Client();
         $this->gpsModel = new GPSDevice();
+        $this->permissionModel = new Permission();
     }
 
     private function getRoleModules(string $role): array
@@ -38,7 +41,12 @@ class DashboardController extends Controller
             ['label' => 'Settings', 'route' => 'settings', 'icon' => 'fa-gear', 'roles' => ['Administrator','Director']],
         ];
 
-        return array_filter($allModules, fn($module) => in_array($role, $module['roles'], true));
+        $this->permissionModel->ensureModulePermissions();
+        $customModules = $this->permissionModel->modulesForRole($role);
+        if ($customModules) {
+            return array_values(array_filter($allModules, fn($module) => in_array($module['route'], $customModules, true)));
+        }
+        return array_values(array_filter($allModules, fn($module) => in_array($role, $module['roles'], true)));
     }
 
     public function index(): void

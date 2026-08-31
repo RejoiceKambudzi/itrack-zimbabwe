@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) . '/helpers/auth.php';
+require_once dirname(__DIR__) . '/models/Permission.php';
 
 class Controller
 {
@@ -48,6 +49,20 @@ class Controller
 
         if (empty($_SESSION['user'])) {
             $this->redirect('/login.php');
+        }
+    }
+
+    protected function requireModuleAccess(string $module, array $fallbackRoles = []): void
+    {
+        $this->requireLogin();
+        $role = $_SESSION['user']['role'] ?? '';
+        $role = $role === 'admin' ? 'Administrator' : $role;
+        if (in_array($role, $fallbackRoles, true)) return;
+        $permissions = new Permission();
+        $permissions->ensureModulePermissions();
+        if (!in_array($module, $permissions->modulesForRole($role), true)) {
+            http_response_code(403);
+            exit('Forbidden');
         }
     }
 
