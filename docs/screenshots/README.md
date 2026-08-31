@@ -1,11 +1,12 @@
 # Application screenshots
 
-These screenshots were captured from the running iTrack Zimbabwe application at a 1440 × 1000 viewport. They document the public entry point and the authenticated module surface.
+These screenshots were captured from the running iTrack Zimbabwe application at 1440 × 1000 for desktop screens and 390 × 844 for the mobile dashboard. They document the public entry point and the authenticated module surface.
 
 | File | Screen | Route |
 |---|---|---|
 | `login.png` | Login | `/login.php` |
-| `dashboard.png` | Dashboard overview | `/dashboard.php` |
+| `dashboard.png` | Dashboard overview, desktop | `/dashboard.php` |
+| `dashboard-mobile.png` | Dashboard overview, mobile | `/dashboard.php` |
 | `inventory.png` | Inventory | `?controller=inventory` |
 | `purchases.png` | Purchases | `?controller=purchases` |
 | `sales.png` | Sales | `?controller=sales` |

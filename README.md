@@ -41,6 +41,7 @@ The repository includes current application screenshots in [`docs/screenshots/`]
 |---|---|
 | Login | ![Login screen](docs/screenshots/login.png) |
 | Dashboard | ![Dashboard](docs/screenshots/dashboard.png) |
+| Dashboard mobile | ![Mobile dashboard](docs/screenshots/dashboard-mobile.png) |
 | Inventory | ![Inventory](docs/screenshots/inventory.png) |
 | Purchases | ![Purchases](docs/screenshots/purchases.png) |
 | Sales | ![Sales](docs/screenshots/sales.png) |
