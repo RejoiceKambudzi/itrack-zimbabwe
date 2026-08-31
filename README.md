@@ -33,6 +33,27 @@ The application creates or uses `storage/itrack.sqlite` when PDO MySQL is unavai
 
 Change the default password immediately in any non-local environment.
 
+## Screenshots
+
+The repository includes current application screenshots in [`docs/screenshots/`](docs/screenshots/). The gallery covers the public login screen and the authenticated dashboard and module pages.
+
+| Screen | Preview |
+|---|---|
+| Login | ![Login screen](docs/screenshots/login.png) |
+| Dashboard | ![Dashboard](docs/screenshots/dashboard.png) |
+| Inventory | ![Inventory](docs/screenshots/inventory.png) |
+| Purchases | ![Purchases](docs/screenshots/purchases.png) |
+| Sales | ![Sales](docs/screenshots/sales.png) |
+| Requisitions | ![Requisitions](docs/screenshots/requisitions.png) |
+| Reports | ![Reports](docs/screenshots/reports.png) |
+| Accounting | ![Accounting](docs/screenshots/accounting.png) |
+| GPS devices | ![GPS devices](docs/screenshots/gps.png) |
+| Clients | ![Clients](docs/screenshots/clients.png) |
+| Suppliers | ![Suppliers](docs/screenshots/suppliers.png) |
+| Notifications | ![Notifications](docs/screenshots/notifications.png) |
+| Users | ![Users](docs/screenshots/users.png) |
+| Settings | ![Settings](docs/screenshots/settings.png) |
+
 ## Application routes
 
 All authenticated modules are routed through `public/index.php` using the `controller` and `action` query parameters. Examples include `?controller=inventory`, `?controller=clients`, `?controller=purchases`, `?controller=sales`, `?controller=requisition`, `?controller=reports`, `?controller=notification`, and `?controller=settings`.
