@@ -1,7 +1,7 @@
 <?php $title = 'Clients'; ?>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="h4 mb-0">Clients</h2>
-    <a class="btn btn-primary" href="/itrack-zimbabwe/public/index.php?controller=client&action=create">New Client</a>
+    <a class="btn btn-primary" href="/index.php?controller=client&action=create">New Client</a>
 </div>
 <div class="card shadow-sm border-0">
     <div class="card-body">
@@ -26,8 +26,8 @@
                             <td><?= htmlspecialchars($client['phone'] ?? '') ?></td>
                             <td><?= htmlspecialchars($client['status'] ?? '') ?></td>
                             <td>
-                                <a class="btn btn-sm btn-outline-secondary" href="/itrack-zimbabwe/public/index.php?controller=client&action=edit&id=<?= (int) ($client['id'] ?? 0) ?>">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger" href="/itrack-zimbabwe/public/index.php?controller=client&action=delete&id=<?= (int) ($client['id'] ?? 0) ?>" onclick="return confirm('Delete this client?')">Delete</a>
+                                <a class="btn btn-sm btn-outline-secondary" href="/index.php?controller=client&action=edit&id=<?= (int) ($client['id'] ?? 0) ?>">Edit</a>
+                                <a class="btn btn-sm btn-outline-danger" href="/index.php?controller=client&action=delete&id=<?= (int) ($client['id'] ?? 0) ?>" onclick="return confirm('Delete this client?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

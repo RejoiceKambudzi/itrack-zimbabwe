@@ -47,7 +47,7 @@ class NotificationController extends Controller
             }
 
             $this->notificationModel->create($_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=notification');
+            $this->redirect('/index.php?controller=notification');
         }
 
         $this->view('notifications/form', [
@@ -64,7 +64,7 @@ class NotificationController extends Controller
         $notification = $this->notificationModel->find($id);
 
         if (!$notification) {
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=notification');
+            $this->redirect('/index.php?controller=notification');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -79,7 +79,7 @@ class NotificationController extends Controller
             }
 
             $this->notificationModel->update($id, $_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=notification');
+            $this->redirect('/index.php?controller=notification');
         }
 
         $this->view('notifications/form', [
@@ -98,6 +98,6 @@ class NotificationController extends Controller
             $this->notificationModel->delete($id);
         }
 
-        $this->redirect('/itrack-zimbabwe/public/index.php?controller=notification');
+        $this->redirect('/index.php?controller=notification');
     }
 }

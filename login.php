@@ -1,4 +1,4 @@
 <?php
 
-header('Location: /itrack-zimbabwe/public/login.php');
+header('Location: /login.php');
 exit;

@@ -38,7 +38,7 @@ class GPSController extends Controller
             }
 
             $this->gpsModel->create($_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=gps');
+            $this->redirect('/index.php?controller=gps');
         }
 
         $this->view('gps/form', [
@@ -55,7 +55,7 @@ class GPSController extends Controller
         $device = $this->gpsModel->find($id);
 
         if (!$device) {
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=gps');
+            $this->redirect('/index.php?controller=gps');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,7 +70,7 @@ class GPSController extends Controller
             }
 
             $this->gpsModel->update($id, $_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=gps');
+            $this->redirect('/index.php?controller=gps');
         }
 
         $this->view('gps/form', [
@@ -89,6 +89,6 @@ class GPSController extends Controller
             $this->gpsModel->delete($id);
         }
 
-        $this->redirect('/itrack-zimbabwe/public/index.php?controller=gps');
+        $this->redirect('/index.php?controller=gps');
     }
 }

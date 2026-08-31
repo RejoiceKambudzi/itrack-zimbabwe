@@ -38,7 +38,7 @@ class SupplierController extends Controller
             }
 
             $this->supplierModel->create($_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=supplier');
+            $this->redirect('/index.php?controller=supplier');
         }
 
         $this->view('suppliers/form', [
@@ -55,7 +55,7 @@ class SupplierController extends Controller
         $supplier = $this->supplierModel->find($id);
 
         if (!$supplier) {
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=supplier');
+            $this->redirect('/index.php?controller=supplier');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,7 +70,7 @@ class SupplierController extends Controller
             }
 
             $this->supplierModel->update($id, $_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=supplier');
+            $this->redirect('/index.php?controller=supplier');
         }
 
         $this->view('suppliers/form', [
@@ -89,6 +89,6 @@ class SupplierController extends Controller
             $this->supplierModel->delete($id);
         }
 
-        $this->redirect('/itrack-zimbabwe/public/index.php?controller=supplier');
+        $this->redirect('/index.php?controller=supplier');
     }
 }

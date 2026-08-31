@@ -63,6 +63,27 @@ class User extends Model
         return $this->fetchOne('SELECT * FROM users WHERE email = :email LIMIT 1', [':email' => $email]);
     }
 
+    public function update(int $id, array $data): void
+    {
+        $fields = ['name', 'email', 'role', 'department', 'status'];
+        $values = [];
+        foreach ($fields as $field) {
+            $values[$field] = trim((string) ($data[$field] ?? ''));
+        }
+        $sql = 'UPDATE users SET name=:name, email=:email, role=:role, department=:department, status=:status';
+        $params = [':name'=>$values['name'], ':email'=>$values['email'], ':role'=>$values['role'], ':department'=>$values['department'] ?: 'General', ':status'=>$values['status'] ?: 'active', ':id'=>$id];
+        if (trim((string) ($data['password'] ?? '')) !== '') {
+            $sql .= ', password_hash=:password_hash';
+            $params[':password_hash'] = password_hash((string) $data['password'], PASSWORD_DEFAULT);
+        }
+        $this->execute($sql . ' WHERE id=:id', $params);
+    }
+
+    public function delete(int $id): void
+    {
+        $this->execute('DELETE FROM users WHERE id=:id', [':id'=>$id]);
+    }
+
     public function updatePassword(int $id, string $password): void
     {
         $this->execute('UPDATE users SET password_hash = :password_hash WHERE id = :id', [

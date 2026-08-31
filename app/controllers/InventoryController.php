@@ -27,7 +27,7 @@ class InventoryController extends Controller
                 return;
             }
             $this->productModel->create($_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=inventory');
+            $this->redirect('/index.php?controller=inventory');
         }
 
         $this->view('inventory/form', ['title' => 'Create Product', 'mode' => 'create']);
@@ -39,7 +39,7 @@ class InventoryController extends Controller
         $id = $this->sanitizeInt($_GET['id'] ?? 0);
         $product = $this->productModel->find($id);
         if (!$product) {
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=inventory');
+            $this->redirect('/index.php?controller=inventory');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,7 +48,7 @@ class InventoryController extends Controller
                 return;
             }
             $this->productModel->update($id, $_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=inventory');
+            $this->redirect('/index.php?controller=inventory');
         }
 
         $this->view('inventory/form', ['title' => 'Edit Product', 'mode' => 'edit', 'product' => $product]);
@@ -61,7 +61,7 @@ class InventoryController extends Controller
         if ($id > 0) {
             $this->productModel->delete($id);
         }
-        $this->redirect('/itrack-zimbabwe/public/index.php?controller=inventory');
+        $this->redirect('/index.php?controller=inventory');
     }
 
     public function apiList(): void

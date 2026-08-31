@@ -1,12 +1,3 @@
 <?php
-
-require_once dirname(__DIR__) . '/core/Controller.php';
-
-class ReportsController extends Controller
-{
-    public function index(): void
-    {
-        $this->requireLogin();
-        $this->view('reports/index', ['title' => 'Reports']);
-    }
-}
+require_once dirname(__DIR__) . '/core/Controller.php'; require_once dirname(__DIR__) . '/models/Report.php';
+class ReportsController extends Controller { private Report $model; public function __construct(){ $this->model=new Report(); } public function index():void{$this->requireLogin();$this->view('reports/index',['title'=>'Reports','reports'=>$this->model->all()]);} public function generate():void{$this->requireLogin();if($_SERVER['REQUEST_METHOD']==='POST'&&$this->validateCsrf())$this->model->create($_POST+['generated_by'=>$_SESSION['user']['id']??null]);$this->redirect('/index.php?controller=reports');} }

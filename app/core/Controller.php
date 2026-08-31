@@ -47,14 +47,16 @@ class Controller
         }
 
         if (empty($_SESSION['user'])) {
-            $this->redirect('/itrack-zimbabwe/public/login.php');
+            $this->redirect('/login.php');
         }
     }
 
     protected function requireRole(array $roles): void
     {
         $this->requireLogin();
-        if (!in_array($_SESSION['user']['role'] ?? '', $roles, true)) {
+        $role = $_SESSION['user']['role'] ?? '';
+        $role = $role === 'admin' ? 'Administrator' : $role;
+        if (!in_array($role, $roles, true)) {
             http_response_code(403);
             exit('Forbidden');
         }

@@ -1,7 +1,1 @@
-<?php $title = 'Settings'; ?>
-<div class="card shadow-sm border-0">
-    <div class="card-body">
-        <h5 class="card-title">Settings</h5>
-        <p class="text-muted">System preferences, permissions, branches, and company profile controls are arranged in the settings module.</p>
-    </div>
-</div>
+<div class="mb-4"><h1 class="page-title">Settings</h1><p class="page-subtitle">Review the active application configuration and operational defaults.</p></div><div class="card"><div class="card-body"><div class="row g-4"><div class="col-md-6"><h5>Application</h5><dl class="row"><dt class="col-sm-5">Name</dt><dd class="col-sm-7"><?= htmlspecialchars($config['name']??'iTrack Zimbabwe') ?></dd><dt class="col-sm-5">Environment</dt><dd class="col-sm-7"><?= htmlspecialchars($config['env']??'local') ?></dd></dl></div><div class="col-md-6"><h5>Database</h5><dl class="row"><dt class="col-sm-5">Driver</dt><dd class="col-sm-7">PDO with SQLite fallback</dd><dt class="col-sm-5">Currency</dt><dd class="col-sm-7">USD</dd></dl></div></div></div></div>

@@ -38,7 +38,7 @@ class ClientController extends Controller
             }
 
             $this->clientModel->create($_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=client');
+            $this->redirect('/index.php?controller=client');
         }
 
         $this->view('clients/form', [
@@ -55,7 +55,7 @@ class ClientController extends Controller
         $client = $this->clientModel->find($id);
 
         if (!$client) {
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=client');
+            $this->redirect('/index.php?controller=client');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,7 +70,7 @@ class ClientController extends Controller
             }
 
             $this->clientModel->update($id, $_POST);
-            $this->redirect('/itrack-zimbabwe/public/index.php?controller=client');
+            $this->redirect('/index.php?controller=client');
         }
 
         $this->view('clients/form', [
@@ -89,6 +89,6 @@ class ClientController extends Controller
             $this->clientModel->delete($id);
         }
 
-        $this->redirect('/itrack-zimbabwe/public/index.php?controller=client');
+        $this->redirect('/index.php?controller=client');
     }
 }

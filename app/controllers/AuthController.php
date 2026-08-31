@@ -18,7 +18,7 @@ class AuthController extends Controller
         $this->ensureSession();
 
         if (!empty($_SESSION['user'])) {
-            $this->redirect('/itrack-zimbabwe/public/dashboard.php');
+            $this->redirect('/dashboard.php');
         }
 
         $error = '';
@@ -51,7 +51,7 @@ class AuthController extends Controller
                     ]);
                     $_SESSION['user'] = $user;
                     $_SESSION['user']['logged_in_at'] = date('Y-m-d H:i:s');
-                    $this->redirect('/itrack-zimbabwe/public/dashboard.php');
+                    $this->redirect('/dashboard.php');
                 }
 
                 debugLog('AuthController::login invalid credentials', [
@@ -69,7 +69,36 @@ class AuthController extends Controller
         $this->ensureSession();
         session_unset();
         session_destroy();
-        $this->redirect('/itrack-zimbabwe/public/login.php');
+        $this->redirect('/login.php');
+    }
+
+    public function register(): void
+    {
+        $this->ensureSession();
+        if (!empty($_SESSION['user'])) {
+            $this->redirect('/dashboard.php');
+        }
+        $error = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!$this->validateCsrf()) {
+                $error = 'Invalid security token.';
+            } elseif (strlen((string) ($_POST['password'] ?? '')) < 8) {
+                $error = 'Password must be at least 8 characters.';
+            } elseif ($this->userModel->findByEmail($this->sanitize($_POST['email'] ?? ''))) {
+                $error = 'An account with that email already exists.';
+            } else {
+                $this->userModel->create([
+                    'name' => $this->sanitize($_POST['name'] ?? ''),
+                    'email' => $this->sanitize($_POST['email'] ?? ''),
+                    'password' => (string) ($_POST['password'] ?? ''),
+                    'role' => 'Staff',
+                    'department' => $this->sanitize($_POST['department'] ?? 'General'),
+                    'status' => 'active',
+                ]);
+                $this->redirect('/login.php');
+            }
+        }
+        $this->view('auth/register', ['title' => 'Register', 'error' => $error]);
     }
 
     public function forgotPassword(): void

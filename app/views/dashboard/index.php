@@ -74,7 +74,7 @@
         </div>
         <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
             <?php $defaultModule = $modules[0]['route'] ?? 'dashboard'; ?>
-            <a class="btn btn-brand btn-primary" href="<?= $defaultModule === 'dashboard' ? '/itrack-zimbabwe/public/dashboard.php' : '/itrack-zimbabwe/public/index.php?controller=' . urlencode($defaultModule) ?>">Open <?= htmlspecialchars($modules[0]['label'] ?? 'Dashboard') ?></a>
+            <a class="btn btn-brand btn-primary" href="<?= $defaultModule === 'dashboard' ? '/dashboard.php' : '/index.php?controller=' . urlencode($defaultModule) ?>">Open <?= htmlspecialchars($modules[0]['label'] ?? 'Dashboard') ?></a>
         </div>
     </div>
 </div>
@@ -85,7 +85,7 @@
         <div class="row g-3 mt-3">
             <?php foreach ($modules as $module): ?>
                 <div class="col-sm-6 col-lg-4">
-                    <a class="card text-decoration-none h-100" href="/itrack-zimbabwe/public/index.php?controller=<?= htmlspecialchars($module['route']) ?>">
+                    <a class="card text-decoration-none h-100" href="/index.php?controller=<?= htmlspecialchars($module['route']) ?>">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
                                 <span class="badge bg-primary rounded-pill me-2"><i class="fa-solid <?= htmlspecialchars($module['icon']) ?>"></i></span>

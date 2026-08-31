@@ -22,7 +22,9 @@
                     <button class="btn btn-primary w-100" type="submit">Sign In</button>
                 </form>
                 <div class="mt-3 text-center">
-                    <a href="/itrack-zimbabwe/public/index.php?controller=auth&action=forgotPassword">Forgot password?</a>
+                    <a href="/index.php?controller=auth&action=forgotPassword">Forgot password?</a>
+                    <span class="mx-2 text-muted">|</span>
+                    <a href="/index.php?controller=auth&action=register">Create account</a>
                 </div>
             </div>
         </div>

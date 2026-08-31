@@ -14,7 +14,7 @@
                         <input type="email" name="email" class="form-control" required>
                     </div>
                     <button class="btn btn-primary" type="submit">Send Reset Request</button>
-                    <a class="btn btn-outline-secondary ms-2" href="/itrack-zimbabwe/public/login.php">Back to login</a>
+                    <a class="btn btn-outline-secondary ms-2" href="/login.php">Back to login</a>
                 </form>
             </div>
         </div>

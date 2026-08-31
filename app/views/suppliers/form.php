@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Save Supplier</button>
-                        <a class="btn btn-outline-secondary ms-2" href="/itrack-zimbabwe/public/index.php?controller=supplier">Back to list</a>
+                        <a class="btn btn-outline-secondary ms-2" href="/index.php?controller=supplier">Back to list</a>
                     </div>
                 </form>
             </div>

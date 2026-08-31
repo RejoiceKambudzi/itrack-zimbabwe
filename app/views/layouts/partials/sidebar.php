@@ -47,7 +47,7 @@
                 <ul class="nav flex-column px-3">
                     <?php foreach ($items as $item): ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $active($item['route']) ?>" href="<?= $item['route'] === 'dashboard' ? '/itrack-zimbabwe/public/dashboard.php' : '/itrack-zimbabwe/public/index.php?controller=' . urlencode($item['route']) ?>">
+                            <a class="nav-link <?= $active($item['route']) ?>" href="<?= $item['route'] === 'dashboard' ? '/dashboard.php' : '/index.php?controller=' . urlencode($item['route']) ?>">
                                 <i class="fa-solid <?= htmlspecialchars($item['icon']) ?>"></i>
                                 <?= htmlspecialchars($item['label']) ?>
                             </a>
@@ -58,7 +58,7 @@
         <?php endforeach; ?>
 
         <div class="px-3 mt-4">
-            <a class="btn btn-outline-light w-100" href="/itrack-zimbabwe/public/logout.php"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+            <a class="btn btn-outline-light w-100" href="/logout.php"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
         </div>
     </nav>
 <?php endif; ?>

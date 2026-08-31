@@ -46,6 +46,7 @@ class DashboardController extends Controller
         $this->requireLogin();
 
         $role = $_SESSION['user']['role'] ?? 'Staff';
+        $role = $role === 'admin' ? 'Administrator' : $role;
         $summary = [
             'users' => $this->userModel->dashboardSummary()['total_users'] ?? 0,
             'products' => $this->productModel->countProducts(),
