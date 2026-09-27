@@ -16,11 +16,20 @@ The public JSON surface is available at `/api/auth.php`, `/api/inventory.php`, `
 
 ## Run locally
 
-From the repository root:
+From the repository root, run:
 
 ```bash
 php -S 127.0.0.1:8000 -t public
 ```
+
+On Windows with XAMPP, use the PHP executable bundled with XAMPP if `php` is not on your `PATH`:
+
+```powershell
+Set-Location C:\xampp\htdocs\itrack-zimbabwe
+& C:\xampp\php\php.exe -S 127.0.0.1:8000 -t public
+```
+
+Keep the terminal running while using the application. Press `Ctrl+C` in that terminal to stop the server.
 
 Open [http://127.0.0.1:8000/login.php](http://127.0.0.1:8000/login.php).
 
